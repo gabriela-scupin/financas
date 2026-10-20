@@ -42,6 +42,11 @@ class Usuario:
 
         conexao.close()
         return resultado
+    
+    def __init__(self):
+        pass
+
+    
 
         
 

@@ -8,3 +8,8 @@ class Usuario:
     def cadastrar(login: str, senha:str) -> bool:
         conexao, cursor = Conexao().conectar()
         cursor.execute("INSERT INTO tb_usuarios (senha, usuario) VALUES (%s, %s)", [login, senha])
+        
+        conexao.commit()
+        conexao.close()
+
+        return True

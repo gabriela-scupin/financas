@@ -25,8 +25,6 @@ class Usuario:
             print(f"ERRO AO INSERIR {e}")
             return False
 
-    def __init__(self):
-        pass
 
     @staticmethod
     def verificar(login:str, senha: str) -> dict:

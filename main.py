@@ -3,7 +3,12 @@ from src.view.cadastro_usuario_view import CadastroUsuarioView
 
 
 def main(page: ft.Page):
+
+    page.window.width= 500
+    page.window.height= 700
+    page.title= "Cadastro de Usuário"
+
     tela_cadastro_usuario = CadastroUsuarioView (page)
-    page.add(tela_cadastro_usuario)
+    page.views.append(tela_cadastro_usuario)
 
 ft.run(main)

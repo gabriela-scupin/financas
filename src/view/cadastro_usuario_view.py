@@ -1,10 +1,12 @@
 import flet as ft
 from src.model.usuario_model import Usuario
+from src.view.voltar_login_view import Main
 
 class CadastroUsuarioView(ft.View):
     def __init__(self, page: ft.Page):
         super().__init__()
 
+        self.route = "/cadastro"
         self.bgcolor= "#e4e0e3" 
 
         self.horizontal_alignment= ft.CrossAxisAlignment.CENTER
@@ -39,6 +41,8 @@ class CadastroUsuarioView(ft.View):
         if resultado == True:
             self.page.show_dialog(ft.SnackBar(ft.Text("Cadastro realizado!"), bgcolor="#414141"))
         else:
-            pass
+            self.page.show_dialog(ft.SnackBar(ft.Text("Erro ao tentar cadastrar!"), bgcolor="#830000"))
+
+    
 
     

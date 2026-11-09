@@ -1,13 +1,14 @@
 import flet as ft
 from src.model.usuario_model import Usuario
-from src.view.voltar_login_view import Main
+from src.view.voltar_login_view import Login
 
 class CadastroUsuarioView(ft.View):
-    def __init__(self, page: ft.Page):
+    def __init__(self, pagina: ft.Page):
         super().__init__()
-
         self.route = "/cadastro"
         self.bgcolor= "#e4e0e3" 
+
+        self.pagina = pagina
 
         self.horizontal_alignment= ft.CrossAxisAlignment.CENTER
         self.vertical_alignment= ft.CrossAxisAlignment.CENTER
@@ -22,12 +23,12 @@ class CadastroUsuarioView(ft.View):
                                      border_radius=8,
                                      border_width=1, password= True, can_reveal_password=True)
         
-        subtitulo = ft.Text(value="Preencha os dados abaixo", size=30, weight="bold",
+        subtitulo = ft.Text(value="CRIE UMA CONTA", size=30, weight="bold",
                           font_family="Georgia", color="#000000")
 
         botao_cadastrar= ft.Button(content="CADASTRAR" , width=200, on_click=self.cadastrar)
 
-        botao_voltar= ft.Button(content="VOLTE PARA O LOGIN", width=200, on_click=self.cadastrar)
+        botao_voltar= ft.Button(content=ft.Text(value="CLIQUE AQUI SE JA TEM UMA", text_align="CENTER"), width=200, on_click=self.ir_login)
 
         self.controls=[subtitulo, self.campo_usuario, self.campo_senha, botao_cadastrar, botao_voltar]
 
@@ -39,10 +40,9 @@ class CadastroUsuarioView(ft.View):
         resultado = Usuario().cadastrar(usuario,senha)
 
         if resultado == True:
-            self.page.show_dialog(ft.SnackBar(ft.Text("Cadastro realizado!"), bgcolor="#414141"))
+            self.pagina.show_dialog(ft.SnackBar(ft.Text("Cadastro realizado!"), bgcolor="#414141"))
         else:
-            self.page.show_dialog(ft.SnackBar(ft.Text("Erro ao tentar cadastrar!"), bgcolor="#830000"))
+            self.pagina.show_dialog(ft.SnackBar(ft.Text("Erro ao tentar cadastrar!"), bgcolor="#830000"))
 
-    
-
-    
+    async def ir_login(self):
+        await self.pagina.push_route("/login")

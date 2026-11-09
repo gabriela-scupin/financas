@@ -8,6 +8,7 @@ class CadastroUsuarioView(ft.View):
         self.bgcolor= "#e4e0e3" 
 
         self.horizontal_alignment= ft.CrossAxisAlignment.CENTER
+        self.vertical_alignment= ft.CrossAxisAlignment.CENTER
 
         self.campo_usuario = ft.TextField(label= "Novo Usuário",
                                      border_color= "#000000",
@@ -33,4 +34,11 @@ class CadastroUsuarioView(ft.View):
         usuario = self.campo_usuario.value
         senha = self.campo_senha.value
 
-        Usuario().cadastrar(usuario,senha)
+        resultado = Usuario().cadastrar(usuario,senha)
+
+        if resultado == True:
+            self.page.show_dialog(ft.SnackBar(ft.Text("Cadastro realizado!"), bgcolor="#414141"))
+        else:
+            pass
+
+    

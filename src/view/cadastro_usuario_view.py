@@ -26,7 +26,7 @@ class CadastroUsuarioView(ft.View):
         subtitulo = ft.Text(value="CRIE UMA CONTA", size=30, weight="bold",
                           font_family="Georgia", color="#000000")
 
-        botao_cadastrar= ft.Button(content="CADASTRAR" , width=200, on_click=self.cadastrar)
+        botao_cadastrar= ft.Button(content="CADASTRAR" , width=200)
 
         botao_voltar= ft.Button(content=ft.Text(value="CLIQUE AQUI SE JA TEM UMA", text_align="CENTER"), width=200, on_click=self.ir_login)
 

@@ -24,31 +24,32 @@ class Login(ft.View):
         subtitulo = ft.Text(value="ENTRE NA CONTA JA EXISTENTE", size=30, weight="bold",
                           font_family="Georgia", color="#000000")
 
-        botao_cadastrar= ft.Button(content="ENTRAR" , width=200)
+        botao_cadastrar= ft.Button(content="ENTRAR" , width=200, on_click= self.logar)
 
-        botao_voltar= ft.Button(content=ft.Text(value="VOLTE PARA O CADASTRO", text_align="CENTER"), width=200, on_click= self.ir_cadastro)
+        botao_voltar= ft.Button(content=ft.Text(value="VOLTE PARA O CADASTRO", text_align="CENTER"), width=200)
 
         self.controls=[subtitulo, self.campo_usuario, self.campo_senha, botao_cadastrar, botao_voltar]
 
+    async def ir_principal(self):
+        await self.page.push_route("/principal")
     async def ir_cadastro(self):
         await self.page.push_route("/cadastro")
 
-        def logar(self):
-            usuario = self.campo_usuario.value
-            senha= self.campo_senha.value
+    async def logar(self):
+        usuario = self.campo_usuario.value
+        senha= self.campo_senha.value
 
-            resultado = Usuario().verificar(usuario,senha)
-    
-            if resultado :
-                self.page.show_dialog(ft.SnackBar(ft.Text("Insira as credencias para realiar o login!"),
-                                                  bgcolor="#b91414"))
-                                                   
-            else:
-                self.page.show_dialog(ft.SnackBar(ft.Text("Login realizado com sucesso!"),
-                                                  bgcolor="#1f992a"))
-                
-        async def cadastro (self):
-            await self.page.push_route("/cadastro")
+        resultado = Usuario().verificar(usuario,senha)
 
-        async def ir_principal(self):
-            await self.page.push_route("/principal")
+        
+
+        if resultado :
+            await self.ir_principal()
+            self.page.show_dialog(ft.SnackBar(ft.Text("Login realizado com sucesso!"),
+                                                bgcolor="#1f992a"))
+                                                
+        else:
+            
+            self.page.show_dialog(ft.SnackBar(ft.Text("Insira as credencias para realiar o login!"),
+                                                bgcolor="#b91414"))
+

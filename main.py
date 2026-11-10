@@ -77,6 +77,6 @@ def main(page: ft.Page):
     page.on_route_change = roteamento
     roteamento()
 
-    page.views.append("/login")
+    page.navigate("/login")
 
 ft.run(main)

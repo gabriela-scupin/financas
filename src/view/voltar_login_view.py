@@ -42,10 +42,10 @@ class Login(ft.View):
         resultado = Usuario().verificar(usuario,senha)
 
         if resultado :
-            await self.ir_principal()
             self.page.show_dialog(ft.SnackBar(ft.Text("Login realizado com sucesso!"),
                                                 bgcolor="#1f992a"))
-            self.page.session.set("usuario_logado", resultado.get("usuario"))
+            self.page.session.store.set("usuario_logado", resultado.get("usuario"))
+            await self.ir_principal()
                                                 
         else:
             

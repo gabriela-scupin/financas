@@ -39,15 +39,16 @@ def main(page: ft.Page):
 
         if page.route == "/cadastro":
             tela_cadastro_usuario = CadastroUsuarioView (page)
-            tela_login =  Login(page)
+            
             page.views.append(tela_cadastro_usuario)
 
         elif page.route == "/login":
-            tela_principal = PrincipalUsuarioView(page)
-            tela_principal.navigation_bar = barra_navegacao
+            tela_login =  Login(page)
             page.views.append(tela_login)
 
         elif page.route == "/principal":
+            tela_principal = PrincipalUsuarioView(page)
+            tela_principal.navigation_bar = barra_navegacao
             page.views.append(tela_principal)
 
         elif page.route == "/categoria":
@@ -77,6 +78,6 @@ def main(page: ft.Page):
     page.on_route_change = roteamento
     roteamento()
 
-    page.navigate("/login")
+    page.navigate("/cadastro")
 
 ft.run(main)

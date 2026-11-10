@@ -6,8 +6,8 @@ class PrincipalUsuarioView(ft.View):
 
         self.pagina= pagina
         self.route = "/principal"
-        dados_usuario= pagina.session.store.get("usuario_logado")
-        nome_usuario= dados_usuario.get("login")
+        nome_usuario= pagina.session.store.get("usuario_logado")
+
         self.vertical_alignment="CENTER"   
         titulo= ft.Text(value=f"""SEJA MUITO BEM-VINDO!
             É uma alegria ter você aqui! 

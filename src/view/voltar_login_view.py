@@ -44,7 +44,7 @@ class Login(ft.View):
         if resultado :
             self.page.show_dialog(ft.SnackBar(ft.Text("Login realizado com sucesso!"),
                                                 bgcolor="#1f992a"))
-            self.page.session.store.set("usuario_logado", resultado.get("usuario"))
+            self.page.session.store.set("usuario_logado", resultado.get("login"))
             await self.ir_principal()
                                                 
         else:

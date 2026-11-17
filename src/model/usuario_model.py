@@ -14,7 +14,7 @@ class Usuario:
                 print ("Erro ao tentar conectar!")
                 return False
 
-            cursor.execute("INSERT INTO tb_usuarios (senha, usuario) VALUES (%s, %s)", [login, senha])
+            cursor.execute("INSERT INTO tb_usuarios (login, senha) VALUES (%s, %s)", [login, senha])
             
             conexao.commit()
             conexao.close()
@@ -34,7 +34,7 @@ class Usuario:
             print ("Erro ao tentar verificar!")
             return None
 
-        cursor.execute("SELECT * FROM tb_usuarios where usuario = %s and senha = %s;", [login, senha])
+        cursor.execute("SELECT * FROM tb_usuarios where login = %s and senha = %s;", [login, senha])
 
         resultado = cursor.fetchone()
 

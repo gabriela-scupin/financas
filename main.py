@@ -72,7 +72,6 @@ def main(page: ft.Page):
             page.views.append(despesas_categoria)
 
 
-
         page.update()
 
     page.on_route_change = roteamento

@@ -34,6 +34,8 @@ def main(page: ft.Page):
     ft.NavigationBarDestination(icon=ft.Icons.EXIT_TO_APP, label="Sair")], on_change=navegacao)
 
 
+
+
     def roteamento(e=None):
         page.views.clear()
 

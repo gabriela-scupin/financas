@@ -14,5 +14,7 @@ class CategoriaView(ft.View):
         # Centraliza os componentes horizontalmente
         self.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
+        campo_nome_categoria = ft.TextField(label="Nome da Categoria")
+        botao_cadastrar = ft.Button(content="Incluir", width=250)
 
-        self.controls = [titulo]
+        self.controls = [titulo, campo_nome_categoria, botao_cadastrar]

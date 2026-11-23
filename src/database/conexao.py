@@ -15,7 +15,7 @@ class Conexao:
                                             user= "root",
                                             password="root",
                                             database="financas")
-            cursor = conexao.cursor()
+            cursor = conexao.cursor(dictionary=True)
 
             return conexao, cursor
         except Exception as e: 

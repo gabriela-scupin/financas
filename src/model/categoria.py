@@ -1,5 +1,5 @@
 from src.database.conexao import Conexao
-
+import flet as ft
 class Categoria:
     def __init__(self):
         pass
@@ -14,7 +14,7 @@ class Categoria:
         
 
         try:
-            cursor.execute("INSERT INTO tb_categoria (nome, login) VALUES (%s, %s)", [categoria, login])
+            cursor.execute("INSERT INTO tb_categorias (nome, login) VALUES (%s, %s)", [categoria, login])
             id_categoria = cursor.lastrowid
                 
             conexao.commit()
@@ -53,7 +53,7 @@ class Categoria:
 
         try:
             cursor.execute("""
-                            SELECT id_categoria, nome , id_usuario
+                            SELECT id_categoria, nome , login
                             FROM tb_categorias
                             WHERE login = %s
                             """, [login])

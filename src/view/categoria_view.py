@@ -13,8 +13,8 @@ class CategoriaUsuarioView(ft.View):
         self.vertical_alignment = "center"
 
 
-        dados_usuario = pagina.session.store.get("usuario_logado")
-        self.id_usuario = pagina.session.store.get("login")
+        self.dados_usuario = pagina.session.store.get("usuario_logado")
+        
         titulo = ft.Text(value="Página Categoria",
                         size = 25,
                         font_family="Georgia",
@@ -26,7 +26,7 @@ class CategoriaUsuarioView(ft.View):
         botao_cadastrar = ft.Button(content="Incluir",
                                     bgcolor="#FFEEFA",
                                     color="#7A0047",
-                                    width=250)
+                                    width=250, on_click=self.cadastrar_categoria)
         
         self.controls =[titulo,
                         self.campo_nome_categoria,
@@ -35,8 +35,11 @@ class CategoriaUsuarioView(ft.View):
         nome_categoria = self.campo_nome_categoria.value
 
 
-        resultado = Categoria().adicionar(nome_categoria, self.id_usuario)
-        if resultado:
-            self.pagina.show_dialog(ft.SnackBar(ft.Text("Cadastro efeituado com sucesso!"), bgcolor="#ceffcb"))
+        resultado = Categoria().adicionar(nome_categoria, self.dados_usuario)
+        
+        if resultado == True:
+            self.pagina.show_dialog(ft.SnackBar(ft.Text("Cadastro efeituado com sucesso!"), bgcolor="#044e00"))
         else:
-            self.pagina.show_dialog(ft.SnackBar(ft.Text("Erro ao cadastrar. Entre em contato com o adiministrador"), bgcolor="#ffa0a6"))
+            self.pagina.show_dialog(ft.SnackBar(ft.Text("Erro ao cadastrar. Entre em contato com o adiministrador"), bgcolor="#ca000d"))
+
+            

@@ -14,7 +14,7 @@ class Despesa:
             return None
 
         try:
-            cursor.execute("INSERT INTO tb_despesas (id_categoria, valor, data, descricao, login) VALUES (%s, %s, %s, %s, %s, %s)", [id_categoria, valor, data, descricao, login])
+            cursor.execute("INSERT INTO tb_despesas (id_categoria, valor, data, descricao, login) VALUES (%s, %s, %s, %s, %s)", [id_categoria, valor, data, descricao, login])
 
 
             id_despesa = cursor.lastrowid

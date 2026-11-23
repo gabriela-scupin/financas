@@ -1,5 +1,6 @@
 import flet as ft
 from src.model.usuario_model import Usuario
+from src.model.categoria import Categoria
 from src.view.voltar_login_view import Login
 
 class CadastroUsuarioView(ft.View):

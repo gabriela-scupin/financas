@@ -2,7 +2,7 @@ import flet as ft
 from src.view.cadastro_usuario_view import CadastroUsuarioView
 from src.view.voltar_login_view import Login
 from src.view.principal_tela_view import PrincipalUsuarioView
-from src.view.categoria_view import Categoria
+from src.view.categoria_view import CategoriaUsuarioView
 from src.view.adicionar_despesas_view import AdicionarDespesasView
 from src.view.todas_despesas_view import TodasDespesasView
 from src.view.despesas_por_categoria_view import DespesaPorCategoriaView
@@ -54,7 +54,7 @@ def main(page: ft.Page):
             page.views.append(tela_principal)
 
         elif page.route == "/categoria":
-            categoria = Categoria(page)
+            categoria = CategoriaUsuarioView(page)
             categoria.navigation_bar = barra_navegacao
             page.views.append(categoria)
 
@@ -74,7 +74,7 @@ def main(page: ft.Page):
             page.views.append(despesas_categoria)
 
 
-        page.update()
+        
 
     page.on_route_change = roteamento
     roteamento()
